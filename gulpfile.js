@@ -7,55 +7,77 @@ const concat = require('gulp-concat');
 const imagemin = require('gulp-imagemin');
 const browserSync = require('browser-sync').create();
 
-// HTML
+// === HTML ===
 const html_task = () => {
   return src('app/**/*.html')
-    .pipe(dest('dist'))
-    .pipe(browserSync.stream());
+    .pipe(dest('dist'));
 };
 
-// SCSS
+// === SCSS ===
 const scss_task = () => {
   return src('app/scss/*.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(cssnano())
     .pipe(rename({ suffix: '.min' }))
-    .pipe(dest('dist/css'))
-    .pipe(browserSync.stream());
+    .pipe(dest('dist/css'));
 };
 
-// JS
+// === JS ===
 const js_task = () => {
   return src('app/js/*.js')
     .pipe(concat('script.min.js'))
     .pipe(uglify())
-    .pipe(dest('dist/js'))
-    .pipe(browserSync.stream());
+    .pipe(dest('dist/js'));
 };
 
-// Images
+// === Images ===
 const img_task = () => {
   return src('app/img/*')
     .pipe(imagemin())
-    .pipe(dest('dist/img'))
-    .pipe(browserSync.stream());
+    .pipe(dest('dist/img'));
 };
 
-// BrowserSync
-const serve = () => {
+// === Bootstrap CSS ===
+const bootstrapCSS = () => {
+  return src('node_modules/bootstrap/dist/css/bootstrap.min.css')
+    .pipe(dest('dist/css'));
+};
+
+// === Bootstrap JS ===
+const bootstrapJS = () => {
+  return src('node_modules/bootstrap/dist/js/bootstrap.bundle.min.js')
+    .pipe(dest('dist/js'));
+};
+
+// === BrowserSync (separate task) ===
+const browserSync_task = (done) => {
   browserSync.init({
     server: {
-      baseDir: 'dist'
-    }
+      baseDir: 'dist',
+    },
+    notify: false,
+    open: true,
   });
-  watch('app/**/*.html', html_task);
-  watch('app/scss/**/*.scss', scss_task);
-  watch('app/js/**/*.js', js_task);
-  watch('app/img/*', img_task);
+  done();
 };
 
-// Default task
+// === Watch task ===
+const watch_task = () => {
+  watch('app/**/*.html', series(html_task, reload));
+  watch('app/scss/**/*.scss', series(scss_task, reload));
+  watch('app/js/**/*.js', series(js_task, reload));
+  watch('app/img/*', series(img_task, reload));
+};
+
+// === Reload helper ===
+const reload = (done) => {
+  browserSync.reload();
+  done();
+};
+
+// === Default task ===
 exports.default = series(
-  parallel(html_task, scss_task, js_task, img_task),
-  serve
+  parallel(html_task, scss_task, js_task, img_task, bootstrapCSS, bootstrapJS),
+  browserSync_task,
+  watch_task
 );
