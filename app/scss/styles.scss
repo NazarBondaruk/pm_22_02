@@ -34,8 +34,8 @@ body {
 
 /* -------- LEFT COLUMN -------- */
 .left-column {
-  width: 360px;
-  background: #000; /* finally, TRUE BLACK */
+  width: 360px; 
+  background: #000;
   color: #f9f9f9;
   flex-shrink: 0;
 }
@@ -83,13 +83,15 @@ body {
   flex: 1;
   background: #fff;
   color: #222;
-  padding: 70px 80px;
+  padding: 70px 80px; 
+  align-items: stretch;
 }
 
 .right-column header {
-  border-bottom: 4px solid #f1c40f;
-  margin-bottom: 60px;
+  align-items:center;
+  margin-bottom: 30px;
   padding-bottom: 25px;
+  background: rgb(221, 221, 2);
 }
 
 .right-column h1 {
@@ -100,7 +102,8 @@ body {
 }
 
 .right-column .highlight {
-  color: #f1c40f;
+  color: black;
+  margin-left: 70px;
 }
 
 .right-column .subtitle {
@@ -108,9 +111,11 @@ body {
   font-size: 1.1rem;
   color: #777;
   letter-spacing: 1px;
+  margin-left: 70px;
 }
 
 .section {
+  margin-top: 50px;
   margin-bottom: 70px;
 }
 
@@ -118,7 +123,7 @@ body {
   font-weight: 600;
   text-transform: uppercase;
   color: #111;
-  border-bottom: 3px solid #f1c40f;
+  border-bottom: 3px solid grey;
   padding-left: 5px;
   margin-bottom: 25px;
   margin-top: 25px;
@@ -135,22 +140,14 @@ body {
 }
 
 .work-item span {
-  color: #f1c40f;
+  color: grey;
   margin: 0 5px;
 }
 
-/* -------- SKILLS -------- */
 .skills ul {
   list-style: none;
-  padding: 0;
-  margin: 0;
 }
 
-.skills li {
-  margin-bottom: 10px;
-}
-
-/* -------- RESPONSIVE -------- */
 @media (max-width: 992px) {
   .columns {
     flex-direction: column;
@@ -170,7 +167,23 @@ body {
   }
 }
 
-/* -------- PRINT -------- */
+#chromeBar {
+    width: 300px; 
+    height: 10px; 
+    background-color: #e0e0e0; 
+    border-radius: 10px;
+}
+
+#chromeBar::-webkit-progress-value {
+    background-color: black;
+    border-radius: 12px;
+}
+
+#chromeBar::-webkit-progress-bar {
+    background-color: #e0e0e0; 
+    border-radius: 12px;
+}
+
 @media print {
   body {
     background: none;
@@ -183,4 +196,6 @@ body {
     background: #000 !important;
     color: #fff;
   }
+  /* Style the overall container/element */
+
 }
