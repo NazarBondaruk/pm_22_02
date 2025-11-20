@@ -33,9 +33,9 @@ body {
 /* -------- LEFT COLUMN -------- */
 .left-column {
   width: 360px; 
-  background:rgba(33, 32, 38);
+  background: $primary-grey;
   flex-shrink: 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: $primary-font;
 }
 
 .left-column .profile img {
@@ -53,17 +53,15 @@ body {
 }
 
 .left-column .section-title {
-  color: white;
   font-weight: 600;
   text-transform: uppercase;
   font-size: 1.2rem;
-  border-bottom: 2px solid rgba(254, 203, 0);
+  border-bottom: 2px solid $primary-yellow;
   margin-left: 35px;
   padding-bottom: 15px;
 }
 
 .left-column p {
-  color: #eee;
   font-size: 0.95rem;
   margin-bottom: 10px;
 }
@@ -73,7 +71,7 @@ body {
 }
 
 .contact-container{
-  background-color: rgba(41, 42, 47);
+  background-color: $primary-grey;
   height: 23px;
 }
 
@@ -83,14 +81,14 @@ body {
   width: 50px;
   height: 20px;
   
-  background-color: rgba(254, 203, 0); 
+  background-color: $primary-yellow; 
   
   margin-right: 22px;
   vertical-align: middle;
 }
 
 .info{
-  margin-left: 70px;
+  margin-left: $main-margin-left;
 }
 
 /* -------- RIGHT COLUMN -------- */
@@ -99,7 +97,7 @@ body {
   background:   #ffffff;
   color: #222;
   align-items: stretch;
-  font-family: 'Poppins', sans-serif;
+  font-family: $primary-font;
 }
 
 .right-column header {
@@ -107,7 +105,7 @@ body {
   margin-top: 80px;
   margin-bottom: 30px;
   height: 180px;
-  background: rgba(254, 203, 0);
+  background: $primary-yellow;
 }
 
 .right-column h1 {
@@ -120,16 +118,16 @@ body {
 .right-column .highlight {
   margin-top: 50px;
   width: 740px;
-  color: black;
-  margin-left: 70px;
+  color: $primary-black;
+  margin-left: $main-margin-left;
 }
 
 .right-column .subtitle {
   text-transform: uppercase;
   font-size: 1.1rem;
-  color: black;
+  color: $primary-black;
   letter-spacing: 1px;
-  margin-left: 70px;
+  margin-left: $main-margin-left;
 }
 
 .right-column section {
@@ -139,8 +137,8 @@ body {
 
 .section-title {
   text-transform: uppercase;
-  color: #111;
-  border-bottom: 3px solid black;
+  color: $primary-black;
+  border-bottom: 3px solid $primary-black;
   padding-left: 5px;
   padding-bottom: 15px;
   margin-bottom: 25px;
@@ -155,7 +153,6 @@ body {
 .work-item h6 {
   font-weight: 600;
   font-size: 1.05rem;
-  color: #000;
 }
 
 .work-item span {
@@ -192,15 +189,13 @@ body {
 #chromeBar {
     width: 150px; 
     height: 5px; 
-    background-color: #e0e0e0; 
 }
 
 #chromeBar::-webkit-progress-value {
-    background-color: black;
+    background-color: $primary-black;
 }
 
 #chromeBar::-webkit-progress-bar {
-    background-color: #e0e0e0; 
     border-radius: 12px;
 }
 

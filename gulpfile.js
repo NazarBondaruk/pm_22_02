@@ -6,10 +6,16 @@ const uglify = require('gulp-uglify');
 const concat = require('gulp-concat');
 const imagemin = require('gulp-imagemin');
 const browserSync = require('browser-sync').create();
+const fileinclude = require('gulp-file-include');
+
 
 // === HTML ===
 const html_task = () => {
   return src('app/**/*.html')
+    .pipe(fileinclude({
+      prefix: '@@',
+      basepath: '@file'
+    }))
     .pipe(dest('dist'));
 };
 
