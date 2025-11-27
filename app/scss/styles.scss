@@ -190,17 +190,61 @@ body {
             margin-left: 60px;
         }
 
-#chromeBar {
+.skill-bar {
     width: 150px; 
-    height: 5px; 
+    height: 5px;
     background-color: $primary-white; 
 }
 
-#chromeBar::-webkit-progress-value {
+.skill-bar::-webkit-progress-value {
     background-color: $primary-black;
 }
 
-#chromeBar::-webkit-progress-bar {
+.skill-bar::-webkit-progress-bar {
     background-color: rgb(212, 207, 207); 
 }
+
+/* Стилі для логіки перемикання */
+
+/* Стилі для контейнера заголовка, щоб стрілка була справа */
+.job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer; /* Показуємо, що елемент інтерактивний */
+}
+
+/* Стиль для кнопки-стрілки */
+.toggle-btn {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: transform 0.3s ease; /* Для плавної анімації обертання */
+    padding: 0;
+    margin-left: 10px;
+}
+
+/* 1. Клас, який ПРИХОВУЄ контент */
+.timeline-content-body.hidden {
+    /* Використовуємо max-height для анімованого згортання */
+    max-height: 0; 
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.4s ease-out, opacity 0.4s ease-out;
+}
+
+/* Клас, який ПОКАЗУЄ контент */
+.timeline-content-body:not(.hidden) {
+    /* Достатньо велике значення для гарантованого розкриття */
+    max-height: 500px; 
+    opacity: 1;
+    transition: max-height 0.4s ease-in, opacity 0.4s ease-in;
+}
+
+/* 2. Клас, що обертає стрілку */
+.arrow-icon.rotated {
+    transform: rotate(-180deg);
+}
+
 
